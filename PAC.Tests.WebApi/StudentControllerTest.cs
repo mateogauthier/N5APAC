@@ -22,7 +22,7 @@ public class StudentControllerTest
         var mockStudentService = new Mock<IStudentLogic>();
         var studentController = new StudentController(mockStudentService.Object);
 
-        var student = new Student();
+        var student = new Student() { Name = "Pablo"};
 
         var result = studentController.PostStudent(student);
 
@@ -36,7 +36,7 @@ public class StudentControllerTest
         var mockStudentService = new Mock<IStudentLogic>();
         var studentController = new StudentController(mockStudentService.Object);
 
-        var incorrectStudent = new Student();
+        var incorrectStudent = new Student() { Name = "555555111"};
 
         studentController.PostStudent(incorrectStudent);
     }
