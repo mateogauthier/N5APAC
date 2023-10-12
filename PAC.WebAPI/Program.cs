@@ -5,6 +5,7 @@ using PAC.DataAccess;
 using PAC.Domain;
 using PAC.IBusinessLogic;
 using PAC.IDataAccess;
+using PAC.WebAPI.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IStudentsRepository<Student>, StudentsRepository<Student>>();
+builder.Services.AddScoped<IStudentLogic, StudentLogic>();
+builder.Services.AddScoped<AuthorizationFilter>();
 
 var app = builder.Build();
 

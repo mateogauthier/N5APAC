@@ -15,4 +15,29 @@ public class StudentControllerTest
         public void InitTest()
         {
         }
+
+    [TestMethod]
+    public void PostStudentOK()
+    {
+        var mockStudentService = new Mock<IStudentLogic>();
+        var studentController = new StudentController(mockStudentService.Object);
+
+        var student = new Student();
+
+        var result = studentController.PostStudent(student);
+
+        Assert.IsInstanceOfType(result, typeof(OkResult));
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(Exception))]
+    public void PostStudentFail()
+    {
+        var mockStudentService = new Mock<IStudentLogic>();
+        var studentController = new StudentController(mockStudentService.Object);
+
+        var incorrectStudent = new Student();
+
+        studentController.PostStudent(incorrectStudent);
+    }
 }
